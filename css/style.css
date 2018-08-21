@@ -1,0 +1,656 @@
+@font-face {
+  font-family: Roboto Condensed;
+  src: url(../fonts/Roboto-Regular.ttf);
+}
+
+body {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+header {
+  padding: 30px 0;
+  box-shadow: 0 3px 0 rgba(57, 63, 72, 0.3);
+}
+
+header img {
+  height: 70px;
+  width: auto;
+}
+
+p {
+  font-size: 28px;
+}
+
+.container_custom {
+  width: 100%;
+  padding-right: 2%;
+  padding-left: 2%;
+  margin-right: auto;
+  margin-left: auto;
+
+}
+
+.send {
+
+  width: 300px; /* Ширина поля с кнопкой */
+  border: 1px solid #000; /* Параметры рамки */
+  min-height: 20px; /* Минимальная высота */
+
+}
+
+input[type="text"] {
+  border: none; /* Убираем рамку */
+  outline: none; /* Убираем свечение в Chrome и Safari */
+  -webkit-appearance: none; /* Убираем рамку в Chrome и Safari */
+  width: 274px; /* Ширина поля */
+  vertical-align: middle; /* Выравнивание по середине */
+}
+
+input[type="submit"] {
+  width: 20px; /* Ширина кнопки */
+  height: 20px; /* Высота кнопки */
+  border: none; /* Убираем рамку */
+  background: url('https://png.icons8.com/metro/1600/secured-letter.png') no-repeat 50% 50%; /* Параметры фона */
+}
+
+.title {
+  padding-left: 30px;
+}
+
+.chat {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.chat .chat-header {
+  padding: 20px;
+  border-bottom: 2px solid white;
+}
+
+.chat .chat-header img {
+  float: left;
+}
+
+.chat .chat-header .chat-about {
+  float: left;
+  padding-left: 10px;
+  margin-top: 6px;
+}
+
+.chat .chat-header .chat-with {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.chat .chat-header .chat-num-messages {
+  color: #D8DADF;
+}
+
+.chat .chat-header .fa-star {
+  float: right;
+  color: #D8DADF;
+  font-size: 20px;
+  margin-top: 12px;
+}
+
+.chat .chat-history {
+  padding: 30px 30px 20px;
+  border-bottom: 2px solid white;
+  overflow-y: scroll;
+  height: 90em;
+}
+
+.chat .chat-history .message-data {
+  margin-bottom: 15px;
+}
+
+.chat .chat-history .message-data-time {
+  color: white;
+  padding-left: 6px;
+}
+
+.chat .chat-history .message {
+  padding: 18px 20px;
+  line-height: 26px;
+  font-size: 28px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  margin-bottom: 30px;
+  max-width: 50%;
+}
+
+.chat .chat-history .typing {
+  color: white;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-bottom: 30px;
+  width: 27%;
+}
+
+.chat .chat-history .message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #fef2f2;
+  border-width: 10px;
+  margin-left: -10px;
+}
+
+.chat .chat-history .my-message {
+  background: #fef2f2;
+}
+
+.chat .chat-history .other-message {
+  background: #eeeeee;
+}
+
+.chat .chat-history .other-message:after {
+  border-bottom-color: #eeeeee;
+  left: 93%;
+}
+
+.chat .chat-message {
+  padding: 30px;
+  flex: 0 0 auto;
+
+}
+
+.chat .chat-message textarea {
+  width: 100%;
+  border: none;
+  padding: 10px 20px;
+  font: 14px/22px "Lato", Arial, sans-serif;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  resize: none;
+}
+
+.chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.chat .chat-message #send-button {
+  float: right;
+  color: #94C2ED;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.chat .chat-message button:hover {
+  color: #75b1e8;
+}
+
+.online, .offline, .me {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+.online {
+  color: #86BB71;
+}
+
+.offline {
+  color: #E38968;
+}
+
+.me {
+  color: #94C2ED;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  -webkit-animation: shadow-l-n .425s ease-in-out infinite alternate;
+  animation: shadow-l-n .425s ease-in-out infinite alternate;
+}
+
+#buttons-answer {
+
+  color: #94C2ED;
+  font-size: 16px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  background: #F2F5F8;
+}
+
+.input-file-row-1:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.input-file-row-1 {
+  display: inline-block;
+  margin-top: 25px;
+  position: relative;
+}
+
+input[checbox] {
+  opacity: 0;
+}
+
+html[xmlns] .input-file-row-1 {
+  display: block;
+}
+
+* html .input-file-row-1 {
+  height: 1%;
+}
+
+.upload-file-container {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  overflow: hidden;
+  float: left;
+  margin-left: 23px;
+}
+
+.upload-file-container:first-child {
+  margin-left: 0;
+}
+
+.upload-file-container > img {
+  width: 93px;
+  height: 93px;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+}
+
+.upload-file-container-text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+  color: #719d2b;
+  line-height: 17px;
+  text-align: center;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100px;
+  height: 35px;
+}
+
+.upload-file-container-text > span {
+  border-bottom: 1px solid #719d2b;
+  cursor: pointer;
+}
+
+.upload-file-container input {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  font-size: 1px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  margin: 0;
+  padding: 0;
+  border: none;
+  width: 70px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.test-button {
+  color: #f67b7b;
+  font-size: 50px;
+  cursor: pointer;
+  background: #F2F5F8;
+  border: 3px solid #f67b7b;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.container1 {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: center;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.swing div {
+  border-radius: 50%;
+  float: left;
+  height: 1em;
+  width: 1em;
+}
+
+.swing div:nth-of-type(1) {
+  background: #94C2ED;
+  /*background: -webkit-linear-gradient(left, #385c78 0%, #325774 100%);*/
+  /*background: linear-gradient(to right, #385c78 0%, #325774 100%);*/
+}
+
+.swing div:nth-of-type(2) {
+  background: #94C2ED;
+  /*background: -webkit-linear-gradient(left, #325774 0%, #47536a 100%);*/
+  /*background: linear-gradient(to right, #325774 0%, #47536a 100%);*/
+}
+
+.swing div:nth-of-type(3) {
+  background: #94C2ED;
+  /*background: -webkit-linear-gradient(left, #4a5369 0%, #6b4d59 100%);*/
+  /*background: linear-gradient(to right, #4a5369 0%, #6b4d59 100%);*/
+}
+
+.swing div:nth-of-type(4) {
+  background: -webkit-linear-gradient(left, #744c55 0%, #954646 100%);
+  background: linear-gradient(to right, #744c55 0%, #954646 100%);
+}
+
+.swing div:nth-of-type(5) {
+  background: -webkit-linear-gradient(left, #9c4543 0%, #bb4034 100%);
+  background: linear-gradient(to right, #9c4543 0%, #bb4034 100%);
+}
+
+.swing div:nth-of-type(6) {
+  background: -webkit-linear-gradient(left, #c33f31 0%, #d83b27 100%);
+  background: linear-gradient(to right, #c33f31 0%, #d83b27 100%);
+}
+
+.swing div:nth-of-type(7) {
+  background: -webkit-linear-gradient(left, #da3b26 0%, #db412c 100%);
+  background: linear-gradient(to right, #da3b26 0%, #db412c 100%);
+}
+
+.shadow {
+  clear: left;
+  padding-top: 1.5em;
+}
+
+.shadow div {
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
+  float: left;
+  width: 1em;
+  height: .25em;
+  border-radius: 50%;
+  background: #e3dbd2;
+}
+
+.shadow .shadow-l {
+  background: #d5d8d6;
+}
+
+.shadow .shadow-r {
+  background: #eed3ca;
+}
+
+@-webkit-keyframes ball-l {
+  0%, 50% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(50deg) translateX(-2.5em);
+    transform: rotate(50deg) translateX(-2.5em);
+  }
+}
+
+@keyframes ball-l {
+  0%, 50% {
+    -webkit-transform: rotate(0) translate(0);
+    transform: rotate(0) translateX(0);
+  }
+  100% {
+    -webkit-transform: rotate(50deg) translateX(-2.5em);
+    transform: rotate(50deg) translateX(-2.5em);
+  }
+}
+
+@-webkit-keyframes ball-r {
+  0% {
+    -webkit-transform: rotate(-50deg) translateX(2.5em);
+    transform: rotate(-50deg) translateX(2.5em);
+  }
+  50%,
+  100% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0);
+  }
+}
+
+@keyframes ball-r {
+  0% {
+    -webkit-transform: rotate(-50deg) translateX(2.5em);
+    transform: rotate(-50deg) translateX(2.5em);
+  }
+  50%,
+  100% {
+    -webkit-transform: rotate(0) translateX(0);
+    transform: rotate(0) translateX(0)
+  }
+}
+
+@-webkit-keyframes shadow-l-n {
+  0%, 50% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    opacity: .125;
+    -webkit-transform: translateX(-1.57em);
+    transform: translateX(-1.75em);
+  }
+}
+
+@keyframes shadow-l-n {
+  0%, 50% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100% {
+    opacity: .125;
+    -webkit-transform: translateX(-1.75);
+    transform: translateX(-1.75em);
+  }
+}
+
+@-webkit-keyframes shadow-r-n {
+  0% {
+    opacity: .125;
+    -webkit-transform: translateX(1.75em);
+    transform: translateX(1.75em);
+  }
+  50%,
+  100% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes shadow-r-n {
+  0% {
+    opacity: .125;
+    -webkit-transform: translateX(1.75em);
+    transform: translateX(1.75em);
+  }
+  50%,
+  100% {
+    opacity: .5;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+.swing-l {
+  -webkit-animation: ball-l .425s ease-in-out infinite alternate;
+  animation: ball-l .425s ease-in-out infinite alternate;
+}
+
+.swing-r {
+  -webkit-animation: ball-r .425s ease-in-out infinite alternate;
+  animation: ball-r .425s ease-in-out infinite alternate;
+}
+
+.shadow-l {
+  -webkit-animation: shadow-l-n .425s ease-in-out infinite alternate;
+  animation: shadow-l-n .425s ease-in-out infinite alternate;
+}
+
+.shadow-r {
+  -webkit-animation: shadow-r-n .425s ease-in-out infinite alternate;
+  animation: shadow-r-n .425s ease-in-out infinite alternate;
+}
+
+.sample-show-hide {
+  transition: all linear 1s;
+}
+
+.sample-show-hide.ng-hide {
+  opacity: 1;
+}
+
+.loader-container {
+  font-size: 10px;
+  position: relative;
+  width: 115px;
+  height: 40px;
+  display: inline-block;
+  text-align: center;
+  border-collapse: collapse;
+  vertical-align: top;
+}
+
+.loader-2 {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  border-radius: 50%;
+  position: relative;
+  -webkit-animation: loader-2 0.7s 0.25s ease alternate infinite;
+  animation: loader-2 0.7s 0.25s ease alternate infinite;
+  margin: -20px auto 0;
+}
+
+.loader-2:after,
+.loader-2:before {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: loader-2 0.7s ease alternate infinite;
+  -webkit-animation: loader-2 0.7s ease alternate infinite;
+}
+
+.loader-2:before {
+  left: -20px;
+  animation-delay: 0.1s;
+}
+
+.loader-2:after {
+  right: -20px;
+  animation-delay: 0.3s;
+}
+
+@keyframes loader-2 {
+  0% {
+    box-shadow: 0 15px 0 -15px #e5edeb;
+  }
+  100% {
+    box-shadow: 0 15px 0 #e5edeb;
+  }
+}
+
+@-webkit-keyframes loader-2 {
+  0% {
+    box-shadow: 0 15px 0 -15px #ffffff;
+  }
+  100% {
+    box-shadow: 0 15px 0 #ffffff;
+  }
+}

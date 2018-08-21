@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <title>Оформление заказа</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+        <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+        <link rel="stylesheet" href="../css/chat.css">
+        <script>document.write('<base href="' + document.location + '" />');</script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script data-require="angular.js@1.5.x" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.11/angular.min.js" data-semver="1.5.11"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.5.0/angular-file-upload.min.js"></script>
+</head>
+<body  ng-controller="chat">
+	<!-- header -->
+      <div class="container_custom "   nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+    	<header>
+		<div class="container_custom">
+			<div class="row">
+				<div class="col-md-4">
+					<img src="../images/logo.png" alt="">
+				</div>
+				<div class="col-md-8">
+					<div class="title">
+						<p>Натуральная косметика из Вьетнама, Кореи, Японии</p>
+					</div>
+				</div>
+			</div>
+		</div>
+    	</header>
+         <div class="chat">
+            <!-- end chat-header -->
+            <div class="chat-history" scroll-to-bottom="allMessages">
+               <div class="chat-box">
+                  <ol class="discussion" ng-repeat="message in allMessages track by $index">
+                     <li ng-if="message.from === 'bot'" class="sample-show-hide" ng-show="message.anim">
+                        <div class="message-data">
+                           <span class="message-data-name"><i class="fa fa-circle online "></i> Бот Косметик</span>
+                           <span class="message-data-time">{{date}}</span>
+                        </div>
+                        <div class="message my-message">
+                           {{message.text}}
+                        </div>
+                     </li>
+                     <li ng-if="message.from === 'user'" class="clearfix sample-show-hide" ng-show="message.anim">
+                        <div class="message-data align-right">
+                           <span class="message-data-time" >{{date}}</span> &nbsp; &nbsp;
+                           <span class="message-data-name" >{{user.name}}</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right">
+                           {{message.text}}
+                        </div>
+                     </li>
+                  </ol>
+                  <div ng-show="typing" class="sample-show-hide" ng-show="message.anim">
+                     <div class="message-data">
+                        <span class="message-data-name"><i class="fa fa-circle online "></i> Бот Косметик</span>
+                        <span class="message-data-time">{{date}}</span>
+                     </div>
+                     <div class="typing my-message">
+                        <div  class="loader-container">
+                           <div class="loader-2"></div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- end chat-history -->
+            <div class="chat-message clearfix">
+               <div  ng-show="typeInput === 'checkbox'" class="check">
+                  <label ng-repeat="variantName in variants track by $index" class="container1">{{variantName}}
+                  <input
+                     type="checkbox"
+                     name="selectedFruits[]"
+                     value="{{variantName}}"
+                     ng-checked="selection.indexOf(variantName) > -1"
+                     ng-click="toggleSelectionCheck(variantName)"
+                     >
+                  <span class="checkmark"></span>
+                  </label>
+                  <button  id="send-button"  ng-click="sendVarChek()">Отправить</button>
+               </div>
+               <div  ng-show="typeInput === 'hard_checkbox'" class="check">
+                  <label ng-repeat="variantName in variants track by $index" class="container1">
+                  <button
+                     class="test-button"
+                     type="submit"
+                     name="selectedFruits[]"
+                     value="{{variantName.text}}"
+                     ng-checked="selection.indexOf(variantName) > -1"
+                     ng-click="toggleSelection(variantName)"
+                     >{{variantName.text}}</button>
+                  </label>
+                  <button  id="send-button"  ng-click="sendVarChek()">Отправить</button>
+               </div>
+               <div  ng-show="typeInput === 'photo'" class="container1" >
+                  <input class="test-button"  type="file" nv-file-select="" uploader="uploader" class="container1" style="opacity: 1"/>
+                  <div ng-repeat="item in uploader.queue" >
+                     <button class="test-button" type="button" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">Upload</button>
+                     <button class="test-button" type="button" ng-click="item.remove()">Remove</button>
+                  </div>
+               </div>
+               <button style="display: none" type="button" class="test-button">20-30</button>
+               <textarea ng-show="typeInput === 'text'" name="message-to-send" id="message-to-send" placeholder ="Введите ваше сообщение" rows="3" ng-Model="message" my-enter="sendMessage()"></textarea>
+               <button ng-show="typeInput === 'text'" id="send-button" ng-click="sendMessage()" ng-disabled="!message" >Отправить</button>
+            </div>
+            <!-- end chat-message -->
+         </div>
+         <!-- end chat -->
+      </div>
+                      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+                      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+                      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.js"></script>
+                      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-file-upload/2.5.0/angular-file-upload.js"></script>
+                      <script src="../modules/services/chat.service.js"></script>
+                      <script src="../modules/directives/scrollToBottom.js"></script>
+                      <script src="../modules/directives/myEnter.js"></script>
+                      <script src="../modules/controllers/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="app">
+<head>
+  <meta charset="UTF-8">
+  <title>Оформление заказа</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+  <div class="container clearfix" ng-controller="chat">
+    <div class="people-list" id="people-list">
+      <ul class="list">
+        <li class="clearfix">
+             <img id="image" alt="avatar" ng-show="imageSrc" ng-src="{{imageSrc}}" style="width: 50px;height: 50px;"/>
+          <div class="about">
+            <div class="name" ng-bind="user.name"></div>
+            <div ng-show="user.name" class="status">
+              <i class="fa fa-circle online"></i> online
+            </div>
+            <div ng-show="user.email" class="name" ng-bind="'Email ' + user.email"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="chat">
+      <div class="chat-header clearfix">
+        <div class="chat-about">
+          <div class="chat-with">Оформите заказ на подарочную козину косметики</div>
+          <div class="chat-num-messages">Доставлено 1 902 заказа</div>
+        </div>
+      </div> <!-- end chat-header -->
+      <div class="chat-history" scroll-to-bottom="allMessages">
+            <div class="chat-box">
+              <ol class="discussion" ng-repeat="message in allMessages track by $index">
+               <li ng-if="message.from === 'bot'">
+                    <div class="message-data">
+                      <span class="message-data-name"><i class="fa fa-circle online"></i> Бот Косметик</span>
+                      <span class="message-data-time">{{date}}</span>
+                    </div>
+                    <div class="message my-message">
+                      {{message.text}}
+                    </div>
+                  </li>
+                  <li ng-if="message.from === 'user'" class="clearfix">
+                        <div class="message-data align-right">
+                          <span class="message-data-time" >{{date}}</span> &nbsp; &nbsp;
+                          <span class="message-data-name" >{{user.name}}</span> <i class="fa fa-circle me"></i>
+                        </div>
+                        <div class="message other-message float-right">
+                          {{message.text}}
+                        </div>
+                      </li>
+
+                  </ol>
+                  <div ng-show="typing" aria-busy="true" aria-label="Loading" role="progressbar" >
+                                          <div class="swing">
+                                            <div class="swing-l"></div>
+                                            <div></div>
+                                            <div class="swing-r"></div>
+                                          </div>
+                                          <div class="shadow">
+                                            <div class="shadow-l"></div>
+                                            <div></div>
+                                            <div class="shadow-r"></div>
+                                          </div>
+                                         </div>
+            </div>
+
+        <ul id="list" >
+<!--//Здесь хранятся сообщения //-->
+        </ul>
+      </div> <!-- end chat-history -->
+     <div class="chat-message clearfix">
+        <div  ng-show="typeInput === 'checkbox'" class="check">
+            <label ng-repeat="variantName in variants" class="container1">{{variantName}}
+              <input
+                type="checkbox"
+                name="selectedFruits[]"
+                value="{{variantName}}"
+                ng-checked="selection.indexOf(variantName) > -1"
+                ng-click="toggleSelection(variantName)"
+              >
+              <span class="checkmark"></span>
+            </label>
+            <button  id="send-button"  ng-click="sendVarChek()">Отправить</button>
+        </div>
+       <input ng-show="typeInput === 'photo'" type="file" ng-file-select="onFileSelect($files)" ng-model="imageSrc">
+       <button style="display: none" type="button" class="test-button">20-30</button>
+       <textarea ng-show="typeInput === 'text'" name="message-to-send" id="message-to-send" placeholder ="Введите ваше сообщение" rows="3" ng-Model="message" my-enter="sendMessage()"></textarea>
+       <button ng-show="typeInput === 'text'" id="send-button" ng-click="sendMessage()" ng-disabled="!message" >Отправить</button>
+     </div> <!-- end chat-message -->
+    </div> <!-- end chat -->
+  </div> <!-- end container -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.js"></script>
+  <script src="main-start-lub.js"></script>
+</body>
+</html>
